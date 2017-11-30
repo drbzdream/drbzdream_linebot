@@ -94,22 +94,25 @@ app.use(__WEBPACK_IMPORTED_MODULE_1_body_parser___default.a.json());
 app.use(__WEBPACK_IMPORTED_MODULE_1_body_parser___default.a.urlencoded({ extended: true }));
 app.use(__WEBPACK_IMPORTED_MODULE_2_cors___default()());
 
-var PORT = process.env.PORT || 9090;
-var server = app.listen(PORT, function () {
-  console.log('Production Express server API running at localhost:' + PORT);
-});
-
-app.get('/test', function (req, res) {
-  var x = [{
-    dream: 'cute',
-    mint: 'eiei'
-  }];
-  res.json(x);
+app.set('port', process.env.PORT || 9090);
+app.listen(app.get('port'), function () {
+    console.log('Production Express server API running at localhost:' + app.get('port'));
 });
 
 app.get('/', function (req, res) {
-  res.send('Hello');
+    res.send('Hello!!! This is server for DrbzDream bot');
 });
+app.post('/webhook', function (req, res) {
+    res.sendStatus(200);
+});
+
+// app.get('/test', (req, res) => {
+// 	let x = [{
+//         dream: 'cute',
+//         mint: 'eiei'
+//     }]
+//     res.json(x)	
+// })
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, "src"))
 
 /***/ }),
