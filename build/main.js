@@ -117,10 +117,16 @@ function handleEvent(event) {
 }
 
 // detect msg 
+
+function checkCurrentLocation() {
+    var location = { lat: 0, lng: 0 };
+    return location;
+}
+
 function handleMessageEvent(event) {
     var msg = {
         type: 'text',
-        text: 'น้องยังโง่ รอน้องหน่อยเน้ออออ น้องจะตอบคำถามที่ดูฉลาดกว่านี้ <3'
+        text: 'น้องยังโง่ รอน้องหน่อยเน้ออออ น้องจะตอบคำถามที่ดูฉลาดกว่านี้'
     };
 
     if (event.message.type === 'text') {
@@ -132,6 +138,11 @@ function handleMessageEvent(event) {
                 'originalContentUrl': 'http://78.media.tumblr.com/24fa96daf4bd9bbf25a36a426bed4082/tumblr_ouefu2JwVl1tnwp7qo2_1280.jpg',
                 'previewImageUrl': 'https://i.pinimg.com/originals/02/4b/ce/024bce866c68b0a9be458aabd9511c8f.png'
             };
+        } else if (eventText.contains("555")) {
+            msg = {
+                type: 'text',
+                text: 'ขำไร ขำด้วยจิ 55555555555555555'
+            };
         } else if (eventText === 'อยู่ไหน') {
             msg = {
                 "type": "location",
@@ -142,9 +153,11 @@ function handleMessageEvent(event) {
             };
         }
     } else if (event.message.type === 'sticker') {
+        // id 527
+        var packageId = Math.floor(Math.random() * 527 + 1);
         msg = {
             "type": "sticker",
-            "packageId": "1",
+            "packageId": packageId,
             "stickerId": "1"
         };
     }
