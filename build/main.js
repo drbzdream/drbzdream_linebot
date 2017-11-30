@@ -77,43 +77,54 @@ module.exports = __webpack_require__(1);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(__dirname) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_body_parser__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_body_parser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_body_parser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_cors__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_cors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_cors__);
+var express = __webpack_require__(2);
+var line = __webpack_require__(6);
 
+__webpack_require__(5).config();
 
+var app = express();
 
+var config = {
+    channelAccessToken: "Vj8BrPqUF2Bi9oIPc6BGCu2RWLWy+aQ3PXW9pZ/U4eIbWM4N49ikkjpljzsaBlaA06etw9YjT+9uzF0oeY/Tm6AleDmYC43kIufQvfi+O1PtSxMjvFDZ7wdKWhyyY6KYXMzG13rkG7olCk0Z9wdRQgdB04t89/1O/w1cDnyilFU=",
+    channelSecret: "81bf39e163e77999a7e9160ab05aa0be"
+};
 
-var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
-app.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static(__dirname));
-app.use(__WEBPACK_IMPORTED_MODULE_1_body_parser___default.a.json());
-app.use(__WEBPACK_IMPORTED_MODULE_1_body_parser___default.a.urlencoded({ extended: true }));
-app.use(__WEBPACK_IMPORTED_MODULE_2_cors___default()());
+var client = new line.Client(config);
 
-app.set('port', process.env.PORT || 9090);
-app.listen(app.get('port'), function () {
-    console.log('Production Express server API running at localhost:' + app.get('port'));
+app.post('/webhook', line.middleware(config), function (req, res) {
+    Promise.all(req.body.events.map(handleEvent)).then(function (result) {
+        return res.json(result);
+    });
 });
 
 app.get('/', function (req, res) {
     res.send('Hello!!! This is server for DrbzDream bot');
 });
-app.post('/webhook', function (req, res) {
-    res.sendStatus(200);
-});
 
-// app.get('/test', (req, res) => {
-// 	let x = [{
-//         dream: 'cute',
-//         mint: 'eiei'
-//     }]
-//     res.json(x)	
-// })
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, "src"))
+function handleEvent(event) {
+
+    console.log(event);
+    if (event.type === 'message' && event.message.type === 'text') {
+        handleMessageEvent(event);
+    } else {
+        return Promise.resolve(null);
+    }
+}
+
+function handleMessageEvent(event) {
+    var msg = {
+        type: 'text',
+        text: 'สวัสดีครัช'
+    };
+
+    return client.replyMessage(event.replyToken, msg);
+}
+
+app.set('port', process.env.PORT || 9090);
+
+app.listen(app.get('port'), function () {
+    console.log('Production Express server API running at localhost:' + app.get('port'));
+});
 
 /***/ }),
 /* 2 */
@@ -122,16 +133,18 @@ app.post('/webhook', function (req, res) {
 module.exports = require("express");
 
 /***/ }),
-/* 3 */
+/* 3 */,
+/* 4 */,
+/* 5 */
 /***/ (function(module, exports) {
 
-module.exports = require("body-parser");
+module.exports = require("dotenv");
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports) {
 
-module.exports = require("cors");
+module.exports = require("@line/bot-sdk");
 
 /***/ })
 /******/ ]);
