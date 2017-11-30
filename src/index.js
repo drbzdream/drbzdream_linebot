@@ -24,3 +24,7 @@ app.get('/test', (req, res) => {
     }]
     res.json(x)	
 })
+
+app.get('/', function (req, res) {
+	res.send('Hello')
+})

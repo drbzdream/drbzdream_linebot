@@ -108,6 +108,10 @@ app.get('/test', function (req, res) {
   }];
   res.json(x);
 });
+
+app.get('/', function (req, res) {
+  res.send('Hello');
+});
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, "src"))
 
 /***/ }),
