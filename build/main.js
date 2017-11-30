@@ -82,6 +82,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_body_parser__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_body_parser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_body_parser__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_cors__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_cors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_cors__);
+
 
 
 
@@ -89,12 +92,7 @@ var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 app.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static(__dirname));
 app.use(__WEBPACK_IMPORTED_MODULE_1_body_parser___default.a.json());
 app.use(__WEBPACK_IMPORTED_MODULE_1_body_parser___default.a.urlencoded({ extended: true }));
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,PATCH,DELETE');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(__WEBPACK_IMPORTED_MODULE_2_cors___default()());
 
 var PORT = process.env.PORT || 9090;
 var server = app.listen(PORT, function () {
@@ -125,6 +123,12 @@ module.exports = require("express");
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("cors");
 
 /***/ })
 /******/ ]);
