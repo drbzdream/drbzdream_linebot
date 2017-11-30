@@ -61,7 +61,7 @@ function handleMessageEvent(event) {
                 'originalContentUrl': 'http://78.media.tumblr.com/24fa96daf4bd9bbf25a36a426bed4082/tumblr_ouefu2JwVl1tnwp7qo2_1280.jpg',
                 'previewImageUrl': 'https://i.pinimg.com/originals/02/4b/ce/024bce866c68b0a9be458aabd9511c8f.png'
             }
-        } else if (eventText.contains("555")) {
+        } else if (eventText.includes("555")) {
             msg = {
                 type: 'text',
                 text: 'ขำไร ขำด้วยจิ 55555555555555555'
