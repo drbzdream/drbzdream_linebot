@@ -77,11 +77,8 @@ module.exports = __webpack_require__(1);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-
-var line = __webpack_require__(6);
+var express = __webpack_require__(2);
+var line = __webpack_require__(3);
 
 // import minhyun from './img/min1.png'
 // import jonghyun from './img/jr1.png'
@@ -94,7 +91,7 @@ var config = {
 var client = new line.Client(config);
 
 // setup server
-var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
+var app = express();
 app.set('port', process.env.PORT || 9090);
 app.listen(app.get('port'), function () {
     console.log('Production Express server API running at localhost:' + app.get('port'));
@@ -191,10 +188,7 @@ function handleMessageEvent(event) {
 module.exports = require("express");
 
 /***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */
+/* 3 */
 /***/ (function(module, exports) {
 
 module.exports = require("@line/bot-sdk");

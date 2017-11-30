@@ -1,4 +1,4 @@
-import express from 'express'
+const express = require('express')
 const line = require('@line/bot-sdk')
 
 // import minhyun from './img/min1.png'
