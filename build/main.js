@@ -77,10 +77,14 @@ module.exports = __webpack_require__(1);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var express = __webpack_require__(2);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
+
 var line = __webpack_require__(6);
 
-__webpack_require__(5).config();
+// import minhyun from './img/min1.png'
+// import jonghyun from './img/jr1.png'
 
 // config line developer account
 var config = {
@@ -90,7 +94,7 @@ var config = {
 var client = new line.Client(config);
 
 // setup server
-var app = express();
+var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 app.set('port', process.env.PORT || 9090);
 app.listen(app.get('port'), function () {
     console.log('Production Express server API running at localhost:' + app.get('port'));
@@ -128,8 +132,8 @@ function handleMessageEvent(event) {
         if (eventText === 'ขอดูหน่อย') {
             msg = {
                 'type': 'image',
-                'originalContentUrl': 'https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100',
-                'previewImageUrl': 'https://images.performgroup.com/di/library/GOAL/a6/bb/fifa-18-ronaldo_lx3r88bpjpk91re36ukdgomrj.jpg?t=2027563652&w=620&h=430'
+                'originalContentUrl': 'http://78.media.tumblr.com/24fa96daf4bd9bbf25a36a426bed4082/tumblr_ouefu2JwVl1tnwp7qo2_1280.jpg',
+                'previewImageUrl': 'https://i.pinimg.com/originals/02/4b/ce/024bce866c68b0a9be458aabd9511c8f.png'
             };
         } else if (eventText === 'อยู่ไหน') {
             msg = {
@@ -151,6 +155,35 @@ function handleMessageEvent(event) {
     return client.replyMessage(event.replyToken, msg);
 }
 
+// response.body from line msg
+// {
+//     "events": [
+//       {
+//         "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
+//         "type": "message",
+//         "timestamp": 1462629479859,
+//         "source": {
+//           "type": "user",
+//           "userId": "U206d25c2ea6bd87c17655609a1c37cb8"
+//         },
+//         "message": {
+//           "id": "325708",
+//           "type": "text",
+//           "text": "Hello, world"
+//         }
+//       },
+//       {
+//         "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
+//         "type": "follow",
+//         "timestamp": 1462629479859,
+//         "source": {
+//           "type": "user",
+//           "userId": "U206d25c2ea6bd87c17655609a1c37cb8"
+//         }
+//       }
+//     ]
+//   }
+
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
@@ -160,12 +193,7 @@ module.exports = require("express");
 /***/ }),
 /* 3 */,
 /* 4 */,
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("dotenv");
-
-/***/ }),
+/* 5 */,
 /* 6 */
 /***/ (function(module, exports) {
 

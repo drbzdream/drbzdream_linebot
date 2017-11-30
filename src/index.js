@@ -1,7 +1,8 @@
-const express = require('express');
-const line = require('@line/bot-sdk');
+import express from 'express'
+const line = require('@line/bot-sdk')
 
-require('dotenv').config();
+// import minhyun from './img/min1.png'
+// import jonghyun from './img/jr1.png'
 
 // config line developer account
 const config = {
@@ -45,14 +46,14 @@ function handleMessageEvent(event) {
         text: 'น้องยังโง่ รอน้องหน่อยเน้ออออ น้องจะตอบคำถามที่ดูฉลาดกว่านี้ <3'
     };
 
-    if(event.message.type === 'text') {
+    if (event.message.type === 'text') {
         var eventText = event.message.text.toLowerCase();
 
         if (eventText === 'ขอดูหน่อย') {
             msg = {
                 'type': 'image',
-                'originalContentUrl': 'https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100',
-                'previewImageUrl': 'https://images.performgroup.com/di/library/GOAL/a6/bb/fifa-18-ronaldo_lx3r88bpjpk91re36ukdgomrj.jpg?t=2027563652&w=620&h=430'
+                'originalContentUrl': 'http://78.media.tumblr.com/24fa96daf4bd9bbf25a36a426bed4082/tumblr_ouefu2JwVl1tnwp7qo2_1280.jpg',
+                'previewImageUrl': 'https://i.pinimg.com/originals/02/4b/ce/024bce866c68b0a9be458aabd9511c8f.png'
             }
         } else if (eventText === 'อยู่ไหน') {
             msg = {
@@ -63,7 +64,7 @@ function handleMessageEvent(event) {
                 "longitude": 139.70372892916203
             }
         }
-    } else if(event.message.type === 'sticker') {
+    } else if (event.message.type === 'sticker') {
         msg = {
             "type": "sticker",
             "packageId": "1",
@@ -74,6 +75,35 @@ function handleMessageEvent(event) {
     return client.replyMessage(event.replyToken, msg);
 }
 
+
+// response.body from line msg
+// {
+//     "events": [
+//       {
+//         "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
+//         "type": "message",
+//         "timestamp": 1462629479859,
+//         "source": {
+//           "type": "user",
+//           "userId": "U206d25c2ea6bd87c17655609a1c37cb8"
+//         },
+//         "message": {
+//           "id": "325708",
+//           "type": "text",
+//           "text": "Hello, world"
+//         }
+//       },
+//       {
+//         "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
+//         "type": "follow",
+//         "timestamp": 1462629479859,
+//         "source": {
+//           "type": "user",
+//           "userId": "U206d25c2ea6bd87c17655609a1c37cb8"
+//         }
+//       }
+//     ]
+//   }
 
 
 
