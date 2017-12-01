@@ -78,11 +78,11 @@ function handleMessageEvent(event) {
     } else if (event.message.type === 'sticker') {
         // id 527
         var package_id = Math.floor((Math.random() * 527) + 1);
-        console.log('random:', package_id)
+        // console.log('random:', package_id)
         package_id = '500'
         msg = {
             "type": "sticker",
-            "packageId": '200',
+            "packageId": "200",
             "stickerId": "2"
         }
     }
