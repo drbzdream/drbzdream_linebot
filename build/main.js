@@ -74,9 +74,8 @@ module.exports = __webpack_require__(1);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 var express = __webpack_require__(2);
 var line = __webpack_require__(3);
 
@@ -156,9 +155,10 @@ function handleMessageEvent(event) {
         // id 527
         var package_id = Math.floor(Math.random() * 527 + 1);
         console.log('random:', package_id);
+        package_id = '500';
         msg = {
             "type": "sticker",
-            "packageId": package_id.toString(),
+            "packageId": package_id,
             "stickerId": "2"
         };
     }
