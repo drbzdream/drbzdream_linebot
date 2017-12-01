@@ -55,11 +55,11 @@ function handleMessageEvent(event) {
     if (event.message.type === 'text') {
         var eventText = event.message.text.toLowerCase();
 
-        if (eventText === 'ดูหน่อย') {
+        if (eventText ==='ขอดูหน่อย') {
             msg = {
                 'type': 'image',
-                'originalContentUrl': 'https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100',
-                'previewImageUrl': 'https://images.performgroup.com/di/library/GOAL/a6/bb/fifa-18-ronaldo_lx3r88bpjpk91re36ukdgomrj.jpg?t=2027563652&w=620&h=430'
+                'originalContentUrl': 'https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/min1.png?alt=media&token=d062709c-4827-43aa-8133-2dc7b7e25ba4',
+                'previewImageUrl': 'https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/jr1.png?alt=media&token=60359477-3a9c-4bc0-88c9-6124bcde33ec'
             }
         } else if (/^\d+$/.test(eventText)) {
             msg = {
@@ -77,17 +77,17 @@ function handleMessageEvent(event) {
         }
     } else if (event.message.type === 'sticker') {
         // id 527
-        var package_id = Math.floor((Math.random() * 527) + 1);
+        var package_id = '' + Math.floor((Math.random() * 527) + 1);
         // console.log('random:', package_id)
-        // msg = {
-        //     "type": "sticker",
-        //     "packageId": package_id,
-        //     "stickerId": "2"
-        // }
         msg = {
-            type: 'text',
-            text: 'sticker'
+            "type": "sticker",
+            "packageId": package_id,
+            "stickerId": "2"
         }
+        // msg = {
+        //     type: 'text',
+        //     text: 'sticker'
+        // }
     }
 
     return client.replyMessage(event.replyToken, msg);
