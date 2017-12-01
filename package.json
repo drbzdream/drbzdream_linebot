@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "backpack build",
     "dev": "backpack",
-    "start": "node src/index.js"
+    "start": "node ./build/main.js"
   },
   "keywords": [
     "example",
