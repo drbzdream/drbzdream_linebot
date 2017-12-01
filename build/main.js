@@ -157,7 +157,7 @@ function handleMessageEvent(event) {
         // console.log('random:', package_id)
         msg = {
             "type": "sticker",
-            "packageId": package_id,
+            "packageId": "500",
             "stickerId": "2"
             // msg = {
             //     type: 'text',
