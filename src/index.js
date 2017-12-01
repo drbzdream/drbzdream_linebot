@@ -3,6 +3,7 @@ const line = require('@line/bot-sdk')
 
 // import minhyun from './img/min1.png'
 // import jonghyun from './img/jr1.png'
+var random_no = 0
 
 // config line developer account
 const config = {
@@ -55,7 +56,35 @@ function handleMessageEvent(event) {
     if (event.message.type === 'text') {
         var eventText = event.message.text.toLowerCase();
 
-        if (eventText ==='ขอดูหน่อย') {
+        if (eventText.includes("สวัสดี") || (eventText ==='ดีจ้า' || 'หวัดดี' || 'hi' || 'hello')) {
+            random_no = Math.floor((Math.random() * 10) + 1);
+            if(random_no <= 2) {
+                msg = {
+                    'type': 'text',
+                    'text': eventText
+                }
+            } else if (random_no <= 4){
+                msg = {
+                    'type': 'text',
+                    'text': 'ว่าไงจ๊ะ คิดถึงเราอะดิ อิอิ'
+                }
+            } else if (random_no <= 6){
+                msg = {
+                    'type': 'text',
+                    'text': 'เหงาเหรอ เดี๋ยวคุยด้วยนะ'
+                }
+            } else if (random_no <= 8){
+                msg = {
+                    'type': 'text',
+                    'text': 'อะไร? ใคร? มาทักรู้จักกันเหรอ =.='
+                }
+            } else {
+                msg = {
+                    'type': 'text',
+                    'text': 'อันยองทุกคนเลยยยยยยยยยยยยยยยย'
+                }
+            }
+        } else if (eventText ==='ขอดูหน่อย') {
             msg = {
                 'type': 'image',
                 'originalContentUrl': 'https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/min1.png?alt=media&token=d062709c-4827-43aa-8133-2dc7b7e25ba4',
@@ -63,8 +92,8 @@ function handleMessageEvent(event) {
             }
         } else if (/^\d+$/.test(eventText)) {
             msg = {
-                type: 'text',
-                text: 'ขำไร ขำด้วยจิ 55555555555555555'
+                'type': 'text',
+                'text': 'ขำไร ขำด้วยจิ 55555555555555555'
             }
         } else if (eventText === 'อยู่ไหน') {
             msg = {
