@@ -186,8 +186,9 @@ function handleMessageEvent(event) {
                 };
             } else {
                 msg = {
-                    'type': 'text',
-                    'text': 'เจ้าของบอทเป็นนางฟ้า ดูรูปโปรไฟล์ได้ 5555'
+                    'type': 'image',
+                    'originalContentUrl': 'https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/IMG_2843.JPG?alt=media&token=a6a8da44-4173-4f2c-8477-62c53eef22cb',
+                    'previewImageUrl': 'https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/IMG_3853.JPG?alt=media&token=e2356324-6351-48cf-bbf7-fc8e2eaa10d7'
                 };
             }
         } else if (/^\d+$/.test(eventText) || eventText.search("ขำ") !== -1 || eventText.search("ตลก") !== -1) {
@@ -213,14 +214,80 @@ function handleMessageEvent(event) {
                     'text': eventText
                 };
             }
-        } else if (eventText === 'อยู่ไหน' || 'ถึงไหน' || 'ไปไหน') {
+        } else if (eventText === 'อยู่ไหน' || eventText === 'ถึงไหน' || eventText === 'ไปไหน') {
             msg = {
                 "type": "location",
                 "title": "my location",
-                "address": "〒150-0002 東京都渋谷区渋谷２丁目２１−１",
+                "address": "ที่อยู่ของคนสวย",
                 "latitude": 35.65910807942215,
                 "longitude": 139.70372892916203
             };
+        } else if (eventText.search("เศร้า") !== -1 || eventText.search("เหงา") !== -1) {
+            msg = {
+                "type": "video",
+                "originalContentUrl": "https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/IMG_4793.mp4?alt=media&token=0136c625-2e06-49a7-a6ec-faa8538b891e",
+                "previewImageUrl": "https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/IMG_3853.JPG?alt=media&token=e2356324-6351-48cf-bbf7-fc8e2eaa10d7"
+            };
+        } else if (eventText.search("ดอก") !== -1 || eventText.search("บ้า") !== -1) {
+            random_no = Math.floor(Math.random() * 8 + 1);
+            if (random_no <= 2) {
+                msg = {
+                    'type': 'text',
+                    'text': 'ด่าเราทำไมอะ กระซิกๆ'
+                };
+            } else if (random_no <= 4) {
+                msg = {
+                    'type': 'text',
+                    'text': 'อ้าว อีดอกกกกกกกก '
+                };
+            } else if (random_no <= 6) {
+                msg = {
+                    'type': 'text',
+                    'text': 'ทำไมทำตัวแบบนี้ ไม่น่ารักเลย'
+                };
+            } else {
+                msg = {
+                    'type': 'text',
+                    'text': eventText
+                };
+            }
+        } else if (eventText.search("ด่า") !== -1 && eventText.search("ให้หน่อย") !== -1) {
+            var tempfirst = 0;
+            var templast = 0;
+            for (i = 0; i < eventText.length; i++) {
+                if (eventText[i] == 'า') {
+                    tempfirst = i + 1;
+                    continue;
+                }
+                if (tempfirst != 0 && eventText[i] == 'ใ' && i - tempfirst > 1) {
+                    templast = i;
+                    break;
+                }
+            }
+            var name = eventText.substring(tempfirst, templast);
+
+            random_no = Math.floor(Math.random() * 8 + 1);
+            if (random_no <= 2) {
+                msg = {
+                    'type': 'text',
+                    'text': name + ' ไอเห็ดเกิดจากความเหงา'
+                };
+            } else if (random_no <= 4) {
+                msg = {
+                    'type': 'text',
+                    'text': name + 'ไอขยะรีไซเคิล'
+                };
+            } else if (random_no <= 6) {
+                msg = {
+                    'type': 'text',
+                    'text': name + ' ดีออกกกกกก วรั่ยย' + name + 'ดอกกก'
+                };
+            } else {
+                msg = {
+                    'type': 'text',
+                    'text': 'คลจรัยวร้ายยยย อี' + +'ตูดหมึก ว้ายยยยยยย'
+                };
+            }
         }
     } else if (event.message.type === 'sticker') {
         var sticker_id = '' + Math.floor(Math.random() * 527 + 1);
