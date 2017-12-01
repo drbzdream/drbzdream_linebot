@@ -57,7 +57,7 @@ function handleMessageEvent(event) {
         var eventText = event.message.text.toLowerCase();
 
         if ((eventText === 'ดีจ้า' || eventText === 'หวัดดี' || eventText === 'hi' || eventText === 'hello') || eventText.search("สวัสดี") !== -1) {
-            random_no = Math.floor((Math.random() * 10) + 1);
+            random_no = Math.floor((Math.random() * 11) + 1);
             if(random_no <= 2) {
                 msg = {
                     'type': 'text',
@@ -85,7 +85,7 @@ function handleMessageEvent(event) {
                 }
             }
         } else if (eventText.search("ดู") !== -1 || eventText.search("รูป") !== -1 || eventText.search("กำลังใจ") !== -1) {
-            random_no = Math.floor((Math.random() * 10) + 1);
+            random_no = Math.floor((Math.random() * 11) + 1);
             if(random_no <= 2) {
                 msg = {
                     'type': 'image',
@@ -116,7 +116,7 @@ function handleMessageEvent(event) {
                 }
             }
         } else if (/^\d+$/.test(eventText) || eventText.search("ขำ") !== -1 || eventText.search("ตลก") !== -1) {
-            random_no = Math.floor((Math.random() * 8) + 1);
+            random_no = Math.floor((Math.random() * 9) + 1);
             if(random_no <= 2) {
                 msg = {
                     'type': 'text',
@@ -153,7 +153,7 @@ function handleMessageEvent(event) {
                 "previewImageUrl": "https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/IMG_3853.JPG?alt=media&token=e2356324-6351-48cf-bbf7-fc8e2eaa10d7"
             }
         } else if (eventText.search("ดอก") !== -1 || eventText.search("บ้า") !== -1) {
-            random_no = Math.floor((Math.random() * 8) + 1);
+            random_no = Math.floor((Math.random() * 9) + 1);
             if(random_no <= 2) {
                 msg = {
                     'type': 'text',
@@ -188,12 +188,12 @@ function handleMessageEvent(event) {
                     break;
                 }
             }
-            
+
             var name = eventText.substring(tempfirst, templast);
             tempfirst = 0;
             templast = 0;
 
-            random_no = Math.floor((Math.random() * 8) + 1);
+            random_no = Math.floor((Math.random() * 13) + 1);
             if(random_no <= 2) {
                 msg = {
                     'type': 'text',
@@ -209,15 +209,25 @@ function handleMessageEvent(event) {
                     'type': 'text',
                     'text': name + ' ดีออกกกกกก วรั่ยย' + name +'ดอกกก' 
                 }
+            } else if (random_no <= 8){
+                msg = {
+                    'type': 'text',
+                    'text': name + ' อีอ้วนนนน กินจนตัวจะเท่าช้างอยู่แล้ว' 
+                }
+            } else if (random_no <= 10){
+                msg = {
+                    'type': 'text',
+                    'text': 'อี' + name + ' อ่อนแอ อีทนอุณหภูมิต่ำไม่ได้' 
+                }
             } else {
                 msg = {
                     'type': 'text',
-                    'text': 'คลจรัยวร้ายยยย อี' + + 'ตูดหมึก ว้ายยยยยยย'
+                    'text': 'คลจรัยหยาบบบ อี' + name + 'ตูดหมึก ว้ายยยยยยย'
                 }
             }
         } 
     } else if (event.message.type === 'sticker') {
-        var sticker_id = '' + Math.floor((Math.random() * 527) + 1);
+        var sticker_id = '' + Math.floor((Math.random() * 528) + 1);
         msg = {
             "type": "sticker",
             "packageId": "2",
