@@ -158,7 +158,7 @@ function handleMessageEvent(event) {
         package_id = '500';
         msg = {
             "type": "sticker",
-            "packageId": package_id,
+            "packageId": '200',
             "stickerId": "2"
         };
     }
