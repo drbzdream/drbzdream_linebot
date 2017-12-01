@@ -1,8 +1,8 @@
 const express = require('express')
 const line = require('@line/bot-sdk')
 
-import minhyun from './img/min1.png'
-import jonghyun from './img/jr1.png'
+// import minhyun from './img/min1.png'
+// import jonghyun from './img/jr1.png'
 
 // config line developer account
 const config = {
@@ -58,10 +58,10 @@ function handleMessageEvent(event) {
         if (eventText === 'ดูหน่อย') {
             msg = {
                 'type': 'image',
-                'originalContentUrl': minhyun,
-                'previewImageUrl': jonghyun
+                'originalContentUrl': 'http://78.media.tumblr.com/24fa96daf4bd9bbf25a36a426bed4082/tumblr_ouefu2JwVl1tnwp7qo2_1280.jpg',
+                'previewImageUrl': 'https://i.pinimg.com/originals/02/4b/ce/024bce866c68b0a9be458aabd9511c8f.png'
             }
-        } else if (eventText.includes("555") && !eventText.matches("[a-zA-Z]+")) {
+        } else if (/^\d+$/.test(eventText)) {
             msg = {
                 type: 'text',
                 text: 'ขำไร ขำด้วยจิ 55555555555555555'
@@ -79,7 +79,6 @@ function handleMessageEvent(event) {
         // id 527
         var package_id = Math.floor((Math.random() * 527) + 1);
         // console.log('random:', package_id)
-        package_id = "500"
         msg = {
             "type": "sticker",
             "packageId": package_id,
