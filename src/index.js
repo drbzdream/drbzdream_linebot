@@ -58,8 +58,8 @@ function handleMessageEvent(event) {
         if (eventText === 'ดูหน่อย') {
             msg = {
                 'type': 'image',
-                'originalContentUrl': 'http://78.media.tumblr.com/24fa96daf4bd9bbf25a36a426bed4082/tumblr_ouefu2JwVl1tnwp7qo2_1280.jpg',
-                'previewImageUrl': 'https://i.pinimg.com/originals/02/4b/ce/024bce866c68b0a9be458aabd9511c8f.png'
+                'originalContentUrl': 'https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100',
+                'previewImageUrl': 'https://images.performgroup.com/di/library/GOAL/a6/bb/fifa-18-ronaldo_lx3r88bpjpk91re36ukdgomrj.jpg?t=2027563652&w=620&h=430'
             }
         } else if (/^\d+$/.test(eventText)) {
             msg = {
