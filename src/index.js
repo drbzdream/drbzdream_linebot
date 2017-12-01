@@ -79,10 +79,14 @@ function handleMessageEvent(event) {
         // id 527
         var package_id = Math.floor((Math.random() * 527) + 1);
         // console.log('random:', package_id)
+        // msg = {
+        //     "type": "sticker",
+        //     "packageId": package_id,
+        //     "stickerId": "2"
+        // }
         msg = {
-            "type": "sticker",
-            "packageId": package_id,
-            "stickerId": "2"
+            type: 'text',
+            text: 'sticker'
         }
     }
 

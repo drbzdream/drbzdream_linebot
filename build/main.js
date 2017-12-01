@@ -117,10 +117,10 @@ function handleEvent(event) {
 
 // detect msg 
 
-function checkCurrentLocation() {
-    var location = { lat: 0, lng: 0 };
-    return location;
-}
+// function checkCurrentLocation() {
+//     var location = { lat: 0, lng: 0}
+//     return location;
+// }
 
 function handleMessageEvent(event) {
     var msg = {
@@ -131,13 +131,13 @@ function handleMessageEvent(event) {
     if (event.message.type === 'text') {
         var eventText = event.message.text.toLowerCase();
 
-        if (eventText === 'ขอดูหน่อย') {
+        if (eventText === 'ดูหน่อย') {
             msg = {
                 'type': 'image',
                 'originalContentUrl': 'http://78.media.tumblr.com/24fa96daf4bd9bbf25a36a426bed4082/tumblr_ouefu2JwVl1tnwp7qo2_1280.jpg',
                 'previewImageUrl': 'https://i.pinimg.com/originals/02/4b/ce/024bce866c68b0a9be458aabd9511c8f.png'
             };
-        } else if (eventText.includes("555")) {
+        } else if (/^\d+$/.test(eventText)) {
             msg = {
                 type: 'text',
                 text: 'ขำไร ขำด้วยจิ 55555555555555555'
@@ -155,11 +155,14 @@ function handleMessageEvent(event) {
         // id 527
         var package_id = Math.floor(Math.random() * 527 + 1);
         // console.log('random:', package_id)
-        package_id = '500';
+        // msg = {
+        //     "type": "sticker",
+        //     "packageId": package_id,
+        //     "stickerId": "2"
+        // }
         msg = {
-            "type": "sticker",
-            "packageId": "200",
-            "stickerId": "2"
+            type: 'text',
+            text: 'sticker'
         };
     }
 
