@@ -132,7 +132,7 @@ function handleMessageEvent(event) {
     if (event.message.type === 'text') {
         var eventText = event.message.text.toLowerCase();
 
-        if (eventText === 'ดีจ้า' || 'หวัดดี' || 'hi' || 'hello' || eventText.search("สวัสดี") !== -1) {
+        if (eventText === 'ดีจ้า' || eventText === 'หวัดดี' || eventText === 'hi' || eventText === 'hello' || eventText.search("สวัสดี") !== -1) {
             random_no = Math.floor(Math.random() * 10 + 1);
             if (random_no <= 2) {
                 msg = {
