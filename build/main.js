@@ -160,18 +160,60 @@ function handleMessageEvent(event) {
                     'text': 'อันยองทุกคนเลยยยยยยยยยยยยยยยย'
                 };
             }
-        } else if (eventText === 'ขอดูหน่อย') {
-            msg = {
-                'type': 'image',
-                'originalContentUrl': 'https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/min1.png?alt=media&token=d062709c-4827-43aa-8133-2dc7b7e25ba4',
-                'previewImageUrl': 'https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/jr1.png?alt=media&token=60359477-3a9c-4bc0-88c9-6124bcde33ec'
-            };
-        } else if (/^\d+$/.test(eventText)) {
-            msg = {
-                'type': 'text',
-                'text': 'ขำไร ขำด้วยจิ 55555555555555555'
-            };
-        } else if (eventText === 'อยู่ไหน') {
+        } else if (eventText.includes("ดู") || eventText.includes("รูป")) {
+            random_no = Math.floor(Math.random() * 10 + 1);
+            if (random_no <= 2) {
+                msg = {
+                    'type': 'image',
+                    'originalContentUrl': 'https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/min1.png?alt=media&token=d062709c-4827-43aa-8133-2dc7b7e25ba4',
+                    'previewImageUrl': 'https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/jr1.png?alt=media&token=60359477-3a9c-4bc0-88c9-6124bcde33ec'
+                };
+            } else if (random_no <= 4) {
+                msg = {
+                    'type': 'text',
+                    'text': 'จะดูรูปอะไรอะ ทะลึ่ง คนหยาบคาย'
+                };
+            } else if (random_no <= 6) {
+                msg = {
+                    'type': 'text',
+                    'text': 'เดี๋ยวส่งรูปหลัวเราให้ดูนะ อิอิ'
+                };
+            } else if (random_no <= 8) {
+                msg = {
+                    'type': 'image',
+                    'originalContentUrl': 'https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/IMG_3679.JPG?alt=media&token=b03b826d-828a-4221-a1a9-81caddf6b541',
+                    'previewImageUrl': 'https://firebasestorage.googleapis.com/v0/b/drbzdream-linebot.appspot.com/o/min2.png?alt=media&token=332d6de2-851e-409b-b778-bbf7db563fb9'
+                };
+            } else {
+                msg = {
+                    'type': 'text',
+                    'text': 'เจ้าของบอทเป็นนางฟ้า ดูรูปโปรไฟล์ได้ 5555'
+                };
+            }
+        } else if (/^\d+$/.test(eventText) || eventText.includes("ขำ") || eventText.includes("ตลก")) {
+            random_no = Math.floor(Math.random() * 8 + 1);
+            if (random_no <= 2) {
+                msg = {
+                    'type': 'text',
+                    'text': 'ขำไร ขำด้วยจิ 55555555555555555'
+                };
+            } else if (random_no <= 4) {
+                msg = {
+                    'type': 'text',
+                    'text': 'ขำไร ตลกเหรอ'
+                };
+            } else if (random_no <= 6) {
+                msg = {
+                    'type': 'text',
+                    'text': 'ตลกจังงงงงง 555555555555555555555'
+                };
+            } else {
+                msg = {
+                    'type': 'text',
+                    'text': eventText
+                };
+            }
+        } else if (eventText === 'อยู่ไหน' || 'ถึงไหน' || 'ไปไหน') {
             msg = {
                 "type": "location",
                 "title": "my location",
