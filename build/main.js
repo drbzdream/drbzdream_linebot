@@ -255,7 +255,7 @@ function handleMessageEvent(event) {
             var tempfirst = 0;
             var templast = 0;
             for (i = 0; i < eventText.length; i++) {
-                if (eventText[i] == 'า') {
+                if (eventText[i] == 'า' && i == 2) {
                     tempfirst = i + 1;
                     continue;
                 }
@@ -264,7 +264,10 @@ function handleMessageEvent(event) {
                     break;
                 }
             }
+
             var name = eventText.substring(tempfirst, templast);
+            tempfirst = 0;
+            templast = 0;
 
             random_no = Math.floor(Math.random() * 8 + 1);
             if (random_no <= 2) {
