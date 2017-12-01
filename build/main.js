@@ -132,7 +132,7 @@ function handleMessageEvent(event) {
     if (event.message.type === 'text') {
         var eventText = event.message.text.toLowerCase();
 
-        if (eventText.includes("สวัสดี") || eventText === 'ดีจ้า' || 'หวัดดี' || 'hi' || 'hello') {
+        if (eventText === 'ดีจ้า' || 'หวัดดี' || 'hi' || 'hello' || eventText.includes("สวัสดี")) {
             random_no = Math.floor(Math.random() * 10 + 1);
             if (random_no <= 2) {
                 msg = {
@@ -160,7 +160,8 @@ function handleMessageEvent(event) {
                     'text': 'อันยองทุกคนเลยยยยยยยยยยยยยยยย'
                 };
             }
-        } else if (eventText.includes("ดู") || eventText.includes("รูป")) {
+        }
+        if (eventText.includes("ดู") || eventText.includes("รูป")) {
             random_no = Math.floor(Math.random() * 10 + 1);
             if (random_no <= 2) {
                 msg = {
