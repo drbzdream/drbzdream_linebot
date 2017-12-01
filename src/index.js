@@ -41,10 +41,10 @@ function handleEvent(event) {
 
 // detect msg 
 
-// function checkCurrentLocation() {
-//     var location = { lat: 0, lng: 0}
-//     return location;
-// }
+function checkCurrentLocation() {
+    var location = { lat: 0, lng: 0}
+    return location;
+}
 
 function handleMessageEvent(event) {
     var msg = {
@@ -76,18 +76,12 @@ function handleMessageEvent(event) {
             }
         }
     } else if (event.message.type === 'sticker') {
-        // id 527
-        var package_id = '' + Math.floor((Math.random() * 527) + 1);
-        // console.log('random:', package_id)
+        var sticker_id = '' + Math.floor((Math.random() * 527) + 1);
         msg = {
             "type": "sticker",
-            "packageId": "500",
-            "stickerId": "2"
+            "packageId": "2",
+            "stickerId": sticker_id
         }
-        // msg = {
-        //     type: 'text',
-        //     text: 'sticker'
-        // }
     }
 
     return client.replyMessage(event.replyToken, msg);
