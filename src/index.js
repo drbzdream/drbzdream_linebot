@@ -56,7 +56,7 @@ function handleMessageEvent(event) {
     if (event.message.type === 'text') {
         var eventText = event.message.text.toLowerCase();
 
-        if ((eventText === 'ดีจ้า' || 'หวัดดี' || 'hi' || 'hello') || eventText.includes("สวัสดี")) {
+        if ((eventText === 'ดีจ้า' || 'หวัดดี' || 'hi' || 'hello') || eventText.search("สวัสดี") !== -1) {
             random_no = Math.floor((Math.random() * 10) + 1);
             if(random_no <= 2) {
                 msg = {
@@ -84,8 +84,7 @@ function handleMessageEvent(event) {
                     'text': 'อันยองทุกคนเลยยยยยยยยยยยยยยยย'
                 }
             }
-        } 
-        if (eventText.includes("ดู") || eventText.includes("รูป")) {
+        } else if (eventText.search("ดู") !== -1 || eventText.search("รูป") !== -1 || eventText.search("กำลังใจ") !== -1) {
             random_no = Math.floor((Math.random() * 10) + 1);
             if(random_no <= 2) {
                 msg = {
@@ -115,7 +114,7 @@ function handleMessageEvent(event) {
                     'text': 'เจ้าของบอทเป็นนางฟ้า ดูรูปโปรไฟล์ได้ 5555'
                 }
             }
-        } else if (/^\d+$/.test(eventText) || eventText.includes("ขำ") || eventText.includes("ตลก")) {
+        } else if (/^\d+$/.test(eventText) || eventText.search("ขำ") !== -1 || eventText.search("ตลก") !== -1) {
             random_no = Math.floor((Math.random() * 8) + 1);
             if(random_no <= 2) {
                 msg = {
